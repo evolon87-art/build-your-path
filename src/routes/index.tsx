@@ -2014,7 +2014,7 @@ function Index() {
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle>
-                {yeniTalebeAcik === "aidat" ? "Aidata talebe ekle" : tr("talebeEkle")}
+                {yeniTalebeAcik === "aidat" ? "Yeni Talebe Ekle" : tr("talebeEkle")}
               </DialogTitle>
               <DialogDescription>
                 Talebenin bilgilerini doldurun, ardından ekleyin.
