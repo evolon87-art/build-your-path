@@ -1774,7 +1774,7 @@ function Index() {
                     }}
                   >
                     <Wallet className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm font-medium">Aidata talebe ekle</span>
+                    <span className="text-sm font-medium">Yeni Talebe Ekle</span>
                   </button>
                   <button
                     type="button"
