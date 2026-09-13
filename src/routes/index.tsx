@@ -2017,7 +2017,9 @@ function Index() {
                 {yeniTalebeAcik === "aidat" ? "Yeni Talebe Ekle" : tr("talebeEkle")}
               </DialogTitle>
               <DialogDescription>
-                Talebenin bilgilerini doldurun, ardından ekleyin.
+                {yeniTalebeAcik === "hafiz"
+                  ? "Talebenin ismini yazıp ekleyin."
+                  : "Talebenin bilgilerini doldurun, ardından ekleyin."}
               </DialogDescription>
             </DialogHeader>
 
@@ -2036,80 +2038,84 @@ function Index() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1.5">
-                  <Label htmlFor="yt-dogum">Yaşı / Doğum tarihi</Label>
-                  <Input
-                    id="yt-dogum"
-                    type="date"
-                    value={yeniTalebe.dogum}
-                    onChange={(e) => setYeniTalebe((p) => ({ ...p, dogum: e.target.value }))}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="yt-sinif">Sınıfı</Label>
-                  <Input
-                    id="yt-sinif"
-                    value={yeniTalebe.sinif}
-                    onChange={(e) =>
-                      setYeniTalebe((p) => ({ ...p, sinif: e.target.value.slice(0, 30) }))
-                    }
-                    maxLength={30}
-                    placeholder="Örn. 5. sınıf"
-                  />
-                </div>
-              </div>
+              {yeniTalebeAcik === "aidat" && (
+                <>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="yt-dogum">Yaşı / Doğum tarihi</Label>
+                      <Input
+                        id="yt-dogum"
+                        type="date"
+                        value={yeniTalebe.dogum}
+                        onChange={(e) => setYeniTalebe((p) => ({ ...p, dogum: e.target.value }))}
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="yt-sinif">Sınıfı</Label>
+                      <Input
+                        id="yt-sinif"
+                        value={yeniTalebe.sinif}
+                        onChange={(e) =>
+                          setYeniTalebe((p) => ({ ...p, sinif: e.target.value.slice(0, 30) }))
+                        }
+                        maxLength={30}
+                        placeholder="Örn. 5. sınıf"
+                      />
+                    </div>
+                  </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="yt-telefon">Telefon numarası</Label>
-                <Input
-                  id="yt-telefon"
-                  type="tel"
-                  inputMode="tel"
-                  value={yeniTalebe.telefon}
-                  onChange={(e) =>
-                    setYeniTalebe((p) => ({ ...p, telefon: e.target.value.slice(0, 20) }))
-                  }
-                  maxLength={20}
-                  placeholder="+251 ..."
-                />
-              </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="yt-telefon">Telefon numarası</Label>
+                    <Input
+                      id="yt-telefon"
+                      type="tel"
+                      inputMode="tel"
+                      value={yeniTalebe.telefon}
+                      onChange={(e) =>
+                        setYeniTalebe((p) => ({ ...p, telefon: e.target.value.slice(0, 20) }))
+                      }
+                      maxLength={20}
+                      placeholder="+251 ..."
+                    />
+                  </div>
 
-              <div className="space-y-1.5">
-                <Label>Grubu</Label>
-                <Select
-                  value={yeniTalebe.grup || "yok"}
-                  onValueChange={(v) =>
-                    setYeniTalebe((p) => ({ ...p, grup: v === "yok" ? "" : v }))
-                  }
-                >
-                  <SelectTrigger className="h-9">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="yok">Grup yok</SelectItem>
-                    {gruplar.map((g) => (
-                      <SelectItem key={g.id} value={g.id}>
-                        {g.ad}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+                  <div className="space-y-1.5">
+                    <Label>Grubu</Label>
+                    <Select
+                      value={yeniTalebe.grup || "yok"}
+                      onValueChange={(v) =>
+                        setYeniTalebe((p) => ({ ...p, grup: v === "yok" ? "" : v }))
+                      }
+                    >
+                      <SelectTrigger className="h-9">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="yok">Grup yok</SelectItem>
+                        {gruplar.map((g) => (
+                          <SelectItem key={g.id} value={g.id}>
+                            {g.ad}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="yt-notlar">Notlar</Label>
-                <Textarea
-                  id="yt-notlar"
-                  value={yeniTalebe.notlar}
-                  onChange={(e) =>
-                    setYeniTalebe((p) => ({ ...p, notlar: e.target.value.slice(0, 500) }))
-                  }
-                  maxLength={500}
-                  rows={3}
-                  placeholder="Eklemek istediğiniz notlar..."
-                />
-              </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="yt-notlar">Notlar</Label>
+                    <Textarea
+                      id="yt-notlar"
+                      value={yeniTalebe.notlar}
+                      onChange={(e) =>
+                        setYeniTalebe((p) => ({ ...p, notlar: e.target.value.slice(0, 500) }))
+                      }
+                      maxLength={500}
+                      rows={3}
+                      placeholder="Eklemek istediğiniz notlar..."
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             <DialogFooter>
