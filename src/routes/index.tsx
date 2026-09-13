@@ -169,7 +169,7 @@ const SOZLUK = {
     eminMisiniz: "Emin misiniz?",
     silmeOnay: "Bu talebe kalıcı olarak silinecek. İşlem geri alınamaz.",
     evetSil: "Evet, sil",
-    talebeEkle: "Talebe Ekle",
+    talebeEkle: "Hafizlik Talebe Ekle",
     haftaRaporu: "Haftanın Raporu",
     haftaninRaporu: "Haftanın Raporu",
     vermedi: "Vermedi",
